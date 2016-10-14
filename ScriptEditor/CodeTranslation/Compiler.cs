@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using ScriptEditor.TextEditorUI;
 
 namespace ScriptEditor.CodeTranslation
 {
@@ -280,22 +281,26 @@ namespace ScriptEditor.CodeTranslation
             if (errors != null) {
                 foreach (string s in output.Split(new char[] { '\n' })) {
                     if (s.StartsWith("[Error]") || s.StartsWith("[Warning]") || s.StartsWith("[Message]")) {
-                        Error e = new Error();
-                        if (s[1] == 'E')
-                            e.type = ErrorType.Error;
-                        else if (s[1] == 'W')
-                            e.type = ErrorType.Warning;
-                        else
-                            e.type = ErrorType.Message;
+                        var error = new Error();
+                        if (s[1] == 'E') {
+                            error.type = ErrorType.Error;
+                        } else if (s[1] == 'W') {
+                            error.type = ErrorType.Warning;
+                        } else {
+                            error.type = ErrorType.Message;
+                        }
+
                         Match m = Regex.Match(s, @"\[\w+\]\s*\<([^\>]+)\>\s*\:(\-?\d+):?(\-?\d+)?\:\s*(.*)");
-                        e.fileName = m.Groups[1].Value;
-                        e.line = int.Parse(m.Groups[2].Value);
-                        if (m.Groups[3].Value.Length > 0)
-                            e.column = int.Parse(m.Groups[3].Value);
-                        e.msg = m.Groups[4].Value;
-                        if (e.fileName != "none" && !Path.IsPathRooted(e.fileName))
-                            e.fileName = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(infile), e.fileName));
-                        errors.Add(e);
+                        error.fileName = m.Groups[1].Value;
+                        error.line = int.Parse(m.Groups[2].Value);
+                        if (m.Groups[3].Value.Length > 0) {
+                            error.column = int.Parse(m.Groups[3].Value);
+                        }
+                        error.message = m.Groups[4].Value;
+                        if (error.fileName != "none" && !Path.IsPathRooted(error.fileName)) {
+                            error.fileName = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(infile), error.fileName));
+                        }
+                        errors.Add(error);
                     }
                 }
             }

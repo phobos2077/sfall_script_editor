@@ -136,7 +136,9 @@
     <Compile Include="TextEditor.Designer.cs">
       <DependentUpon>TextEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities.cs" />
+    <Compile Include="TextEditorUI\CodeFolder.cs" />
+    <Compile Include="TextEditorUI\Error.cs" />
+    <Compile Include="TextEditorUI\TabInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutBox.resx">

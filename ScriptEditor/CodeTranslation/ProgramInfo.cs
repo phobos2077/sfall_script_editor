@@ -71,7 +71,6 @@ namespace ScriptEditor.CodeTranslation
         private readonly Dictionary<string, Procedure> procLookup;
         private readonly Dictionary<string, Variable> varLookup;
         public readonly Dictionary<string, Macro> macros;
-        public TabInfo tab;
         public bool parsed = false;
 
         public IParserInfo Lookup(string token, string file, int line)
