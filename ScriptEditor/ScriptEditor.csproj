@@ -81,7 +81,12 @@
     <Compile Include="BatchCompiler.Designer.cs">
       <DependentUpon>BatchCompiler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Compiler.cs" />
+    <Compile Include="CodeTranslation\Compiler.cs" />
+    <Compile Include="CodeTranslation\IParserInfo.cs" />
+    <Compile Include="CodeTranslation\Macro.cs" />
+    <Compile Include="CodeTranslation\Procedure.cs" />
+    <Compile Include="CodeTranslation\Reference.cs" />
+    <Compile Include="CodeTranslation\Variable.cs" />
     <Compile Include="DraggableTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -99,7 +104,7 @@
     </Compile>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProgramInfo.cs" />
+    <Compile Include="CodeTranslation\ProgramInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -188,6 +193,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)\*SyntaxRules.xshd" "$(TargetDir)\resources\"

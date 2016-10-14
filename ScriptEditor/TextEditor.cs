@@ -8,6 +8,7 @@ using Path = System.IO.Path;
 using File = System.IO.File;
 using Directory = System.IO.Directory;
 using SearchOption = System.IO.SearchOption;
+using ScriptEditor.CodeTranslation;
 
 namespace ScriptEditor
 {
@@ -1245,7 +1246,7 @@ namespace ScriptEditor
             TextLocation tl = (TextLocation)editorMenuStrip.Tag;
             string word = TextUtilities.GetWordAt(currentTab.te.Document, currentTab.te.Document.PositionToOffset(tl));
 
-            Ref[] refs = currentTab.parseInfo.LookupReferences(word, currentTab.filename, tl.Line);
+            Reference[] refs = currentTab.parseInfo.LookupReferences(word, currentTab.filename, tl.Line);
             if (refs == null)
                 return;
             if (refs.Length == 0) {
@@ -1279,7 +1280,7 @@ namespace ScriptEditor
             dgv.DoubleClick += new System.EventHandler(this.dgvErrors_DoubleClick);
             dgv.RowHeadersVisible = false;
 
-            foreach (Ref r in refs) {
+            foreach (var r in refs) {
                 Error error = new Error();
                 error.fileName = r.file;
                 error.line = r.line;

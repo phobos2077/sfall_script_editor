@@ -7,12 +7,13 @@ using ICSharpCode.TextEditor.Document;
 using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using ScriptEditor.CodeTranslation;
 
 namespace ScriptEditor
 {
-    enum ErrorType { Error, Warning, Message, Search }
+    public enum ErrorType { Error, Warning, Message, Search }
 
-    class Error
+    public class Error
     {
         public ErrorType type;
         public string msg;
@@ -26,7 +27,7 @@ namespace ScriptEditor
         }
     }
 
-    class TabInfo
+    public class TabInfo
     {
         public ICSharpCode.TextEditor.TextEditorControl te;
         public int index;
@@ -40,7 +41,7 @@ namespace ScriptEditor
         public ProgramInfo parseInfo;
     }
 
-    class CodeFolder : IFoldingStrategy
+    public class CodeFolder : IFoldingStrategy
     {
         public List<FoldMarker> GenerateFoldMarkers(IDocument document, string fileName, object parseInformation)
         {

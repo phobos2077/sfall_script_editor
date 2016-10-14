@@ -5,38 +5,17 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ScriptEditor
+namespace ScriptEditor.CodeTranslation
 {
-    enum ValueType : int { Int = 1, Float = 2, String = 3 }
-    enum VarType : int { Local = 1, Global = 2, Import = 3, Export = 4 }
+    public enum ValueType : int { Int = 1, Float = 2, String = 3 }
+    public enum VarType : int { Local = 1, Global = 2, Import = 3, Export = 4 }
     [Flags]
-    enum ProcType : int { None = 0, Timed = 0x01, Conditional = 0x02, Import = 0x04, Export = 0x08, Critical = 0x10, Pure = 0x20, Inline = 0x40 }
-    enum NameType { None, Macro, LVar, GVar, Proc }
+    public enum ProcType : int { None = 0, Timed = 0x01, Conditional = 0x02, Import = 0x04, Export = 0x08, Critical = 0x10, Pure = 0x20, Inline = 0x40 }
+    public enum NameType { None, Macro, LVar, GVar, Proc }    
 
-    interface IParserInfo
-    {
-        NameType Type();
-        Ref[] References();
-        void Deceleration(out string file, out int line);
-    }
-
-    class Ref
-    {
-        public readonly int line;
-        public readonly string file;
-
-        public Ref(int line, int file)
-        {
-            this.line = line;
-            this.file = Marshal.PtrToStringAnsi(new IntPtr(file));
-            if (this.file != null) {
-                this.file = Path.GetFullPath(this.file);
-            }
-        }
-    }
 
     [StructLayout(LayoutKind.Sequential)]
-    struct ProcedureData
+    public struct ProcedureData
     {
         public int name;
         public ProcType type;
@@ -56,71 +35,10 @@ namespace ScriptEditor
         public IntPtr fstart;
         public int end;
         public IntPtr fend;
-    }
-
-    class Procedure : IParserInfo
-    {
-        public string name;
-        public string fdeclared;
-        public string fstart;
-        //public string fend; //just assume this is the same file as fstart
-        public string filename;
-        public ProcedureData d;
-        public Variable[] variables;
-        public Ref[] references;
-
-        public NameType Type() { return NameType.Proc; }
-        public Ref[] References() { return references; }
-        public void Deceleration(out string file, out int line)
-        {
-            file = fdeclared;
-            line = d.declared;
-        }
-
-        public string ToString(bool fullSpec = true)
-        {
-            System.String s = "";
-            if (fullSpec) {
-                if ((d.type & ProcType.Import) != ProcType.None)
-                    s += "imported ";
-                if ((d.type & ProcType.Export) != ProcType.None)
-                    s += "exported ";
-                if ((d.type & ProcType.Pure) != ProcType.None)
-                    s += "pure ";
-                if ((d.type & ProcType.Inline) != ProcType.None)
-                    s += "inline ";
-                if ((d.type & ProcType.Timed) != ProcType.None)
-                    s += "timed ";
-                if ((d.type & ProcType.Conditional) != ProcType.None)
-                    s += "conditional ";
-                if ((d.type & ProcType.Critical) != ProcType.None)
-                    s += "critical ";
-                s += "procedure ";
-            }
-            s += name;
-            s += "(";
-            for (int i = 0; i < d.args; i++) {
-                if (i > 0)
-                    s += ", ";
-                s += (i >= variables.Length) ? "x" : variables[i].name;
-                if (fullSpec && i < variables.Length && variables[i].initialValue != null)
-                    s += " := " + variables[i].initialValue;
-            }
-            s += ")";
-            return s;
-        }
-        public bool IsImported()
-        {
-            return (d.type & ProcType.Import) > 0;
-        }
-        public override string ToString()
-        {
-            return ToString(true);
-        }
-    }
+    }    
 
     [StructLayout(LayoutKind.Explicit)]
-    struct VariableData
+    public struct VariableData
     {
         [FieldOffset(0)]
         public int name;
@@ -144,81 +62,7 @@ namespace ScriptEditor
         public int initialized;
     }
 
-    class Variable : IParserInfo
-    {
-        public string name;
-        public string fdeclared;
-        public string filename;
-        public VariableData d;
-        public Ref[] references;
-        public string initialValue;
-
-        public NameType Type() { return d.type == VarType.Local ? NameType.LVar : NameType.GVar; }
-        public Ref[] References() { return references; }
-        public void Deceleration(out string file, out int line)
-        {
-            file = fdeclared;
-            line = d.declared;
-        }
-
-        public override string ToString()
-        {
-            string s = "";
-            switch (d.type) {
-                case VarType.Local:
-                    s = "Local variable ";
-                    break;
-                case VarType.Global:
-                    s = "Variable ";
-                    break;
-                case VarType.Import:
-                    s = "Imported variable ";
-                    break;
-                case VarType.Export:
-                    s = "Exported variable ";
-                    break;
-            }
-            s += name;
-            if (initialValue != null)
-                s += " := " + initialValue;
-            return s;
-        }
-        public bool IsImported()
-        {
-            return d.type == VarType.Import;
-        }
-    }
-
-    class Macro : IParserInfo
-    {
-        public readonly string name;
-        public readonly string def;
-        public readonly int declared;
-        public readonly string fdeclared;
-
-        public NameType Type() { return NameType.Macro; }
-        public Ref[] References() { return null; }
-        public void Deceleration(out string file, out int line)
-        {
-            file = fdeclared;
-            line = declared;
-        }
-
-        public Macro(string name, string def, string file, int line)
-        {
-            this.name = name;
-            this.def = def;
-            this.fdeclared = file;
-            this.declared = line;
-        }
-
-        public override string ToString()
-        {
-            return name + " := " + def;
-        }
-    }
-
-    class ProgramInfo
+    public class ProgramInfo
     {
         public readonly Procedure[] procs;
         public readonly Variable[] vars;
@@ -274,7 +118,7 @@ namespace ScriptEditor
                 return pi.Type();
         }
 
-        public Ref[] LookupReferences(string token, string file, int line)
+        public Reference[] LookupReferences(string token, string file, int line)
         {
             IParserInfo pi = Lookup(token, file, line);
             if (pi == null)

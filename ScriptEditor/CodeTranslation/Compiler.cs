@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ScriptEditor
+namespace ScriptEditor.CodeTranslation
 {
-    static class Compiler
+    public static class Compiler
     {
         private static readonly string decompilationPath = Path.Combine(Settings.SettingsFolder, "decomp.ssl");
         private static readonly string parserPath = Path.Combine(Settings.SettingsFolder, "parser.ssl");
@@ -162,13 +162,13 @@ namespace ScriptEditor
                     pi.vars[i].filename = Path.GetFileName(pi.vars[i].fdeclared).ToLowerInvariant();
                 }
                 if (pi.vars[i].d.numRefs == 0) {
-                    pi.vars[i].references = new Ref[0];
+                    pi.vars[i].references = new Reference[0];
                 } else {
                     int[] tmp = new int[pi.vars[i].d.numRefs * 2];
                     getVarRefs(i, tmp);
-                    pi.vars[i].references = new Ref[pi.vars[i].d.numRefs];
+                    pi.vars[i].references = new Reference[pi.vars[i].d.numRefs];
                     for (int j = 0; j < pi.vars[i].d.numRefs; j++)
-                        pi.vars[i].references[j] = new Ref(tmp[j * 2], tmp[j * 2 + 1]);
+                        pi.vars[i].references[j] = Reference.FromPtr(tmp[j * 2], tmp[j * 2 + 1]);
                 }
             }
 
@@ -188,13 +188,13 @@ namespace ScriptEditor
                 }
                 //pi.procs[i].fend=Marshal.PtrToStringAnsi(pi.procs[i].d.fend);
                 if (pi.procs[i].d.numRefs == 0) {
-                    pi.procs[i].references = new Ref[0];
+                    pi.procs[i].references = new Reference[0];
                 } else {
                     int[] tmp = new int[pi.procs[i].d.numRefs * 2];
                     getProcRefs(i, tmp);
-                    pi.procs[i].references = new Ref[pi.procs[i].d.numRefs];
+                    pi.procs[i].references = new Reference[pi.procs[i].d.numRefs];
                     for (int j = 0; j < pi.procs[i].d.numRefs; j++)
-                        pi.procs[i].references[j] = new Ref(tmp[j * 2], tmp[j * 2 + 1]);
+                        pi.procs[i].references[j] = Reference.FromPtr(tmp[j * 2], tmp[j * 2 + 1]);
                 }
                 //Procedure variables
                 if (getProcNamespaceSize(i) == -1) {
@@ -222,13 +222,13 @@ namespace ScriptEditor
                         }
                         var.fdeclared = Marshal.PtrToStringAnsi(var.d.fdeclared);
                         if (var.d.numRefs == 0) {
-                            var.references = new Ref[0];
+                            var.references = new Reference[0];
                         } else {
                             int[] tmp = new int[var.d.numRefs * 2];
                             getProcVarRefs(i, j, tmp);
-                            var.references = new Ref[var.d.numRefs];
+                            var.references = new Reference[var.d.numRefs];
                             for (int k = 0; k < var.d.numRefs; k++)
-                                var.references[k] = new Ref(tmp[k * 2], tmp[k * 2 + 1]);
+                                var.references[k] = Reference.FromPtr(tmp[k * 2], tmp[k * 2 + 1]);
                         }
                     }
                 }
