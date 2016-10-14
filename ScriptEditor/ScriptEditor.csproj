@@ -185,11 +185,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "d:\GAMES\Fallout2\sfall_modderspack\ScriptEditor\ScriptEditor.exe"
+    <PostBuildEvent>copy "$(ProjectDir)\*SyntaxRules.xshd" "$(TargetDir)\resources\"
+copy "$(ProjectDir)\opcodes.txt" "$(TargetDir)\resources\"
+copy "$(TargetPath)" "d:\GAMES\Fallout2\sfall_modderspack\ScriptEditor\ScriptEditor.exe"
 copy "$(ProjectDir)\*SyntaxRules.xshd" "d:\GAMES\Fallout2\sfall_modderspack\ScriptEditor\resources\"
-copy "$(ProjectDir)\opcodes.txt" "d:\GAMES\Fallout2\sfall_modderspack\ScriptEditor\resources\"
-copy "$(ProjectDir)\*SyntaxRules.xshd" "$(TargetDir)\resources\"
-copy "$(ProjectDir)\opcodes.txt" "$(TargetDir)\resources\"</PostBuildEvent>
+copy "$(ProjectDir)\opcodes.txt" "d:\GAMES\Fallout2\sfall_modderspack\ScriptEditor\resources\"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
     <BaseAddress>4194304</BaseAddress>
@@ -200,6 +200,11 @@ copy "$(ProjectDir)\opcodes.txt" "$(TargetDir)\resources\"</PostBuildEvent>
     <StartAction>Project</StartAction>
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -16,7 +16,7 @@ namespace ScriptEditor {
             this.labelCompanyName.Text = string.Empty;
             this.textBoxDescription.Text = string.Format(
 @"The sfall script compiler, for sfall {0}
-updated by phobos2077 at 2015.02.07
+updated by phobos2077 at 2016.10.14
 
 Code editor control is from ICSharpCode.TextEditor 3.2.1 (LGPL)
 http://www.icsharpcode.net/opensource/sd/

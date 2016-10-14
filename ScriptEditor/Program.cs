@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace ScriptEditor {
         /// </summary>
         [STAThread]
         static void Main(string[] args) {
+        	Directory.SetCurrentDirectory(Path.GetDirectoryName(Application.ExecutablePath));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Settings.Load();
