@@ -9,6 +9,7 @@ namespace ScriptEditor
 
     public static class Settings
     {
+        //public static readonly string ProgramFolder = 
         public static readonly string SettingsFolder = Path.Combine(Environment.CurrentDirectory, "settings");
         private static readonly string SettingsPath = Path.Combine(SettingsFolder, "settings.dat");
         private static readonly string preprocessPath = Path.Combine(Settings.SettingsFolder, "preprocess.ssl");

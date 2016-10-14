@@ -9,10 +9,15 @@ using ScriptEditor.TextEditorUI;
 
 namespace ScriptEditor.CodeTranslation
 {
-    public static class Compiler
+    /// <summary>
+    /// Class for compiling and parsing SSL code. Interacts with SSLC compiler via command line (EXE version) and DLL imports.
+    /// </summary>
+    public class Compiler
     {
         private static readonly string decompilationPath = Path.Combine(Settings.SettingsFolder, "decomp.ssl");
         private static readonly string parserPath = Path.Combine(Settings.SettingsFolder, "parser.ssl");
+
+        #region Imports from SSLC DLL
 
         [DllImport("resources\\parser.dll")]
         private static extern int parse_main(string file, string orig, string dir);
@@ -49,11 +54,11 @@ namespace ScriptEditor.CodeTranslation
         [DllImport("resources\\parser.dll")]
         private static extern void getProcVarRefs(int proc, int var, int[] refs);
 
-        private static System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        #endregion
 
-        public static int lastStatus;
+        private int lastStatus;
 
-        private static void AddMacro(string line, Dictionary<string, Macro> macros, string file, int lineno)
+        private void AddMacro(string line, Dictionary<string, Macro> macros, string file, int lineno)
         {
             string token, macro, def;
             int firstspace = line.IndexOf(' ');
@@ -75,7 +80,7 @@ namespace ScriptEditor.CodeTranslation
             macros[token] = new Macro(macro, def, file, lineno + 1);
         }
 
-        private static void GetMacros(string file, string dir, Dictionary<string, Macro> macros)
+        private void GetMacros(string file, string dir, Dictionary<string, Macro> macros)
         {
             if (!File.Exists(file))
                 return;
@@ -95,7 +100,7 @@ namespace ScriptEditor.CodeTranslation
                     GetMacros(text[1], null, macros);
                 } else if (lines[i].StartsWith("#define ")) {
                     if (lines[i].EndsWith("\\")) {
-                        sb.Length = 0;
+                        var sb = new StringBuilder();
                         int lineno = i;
                         lines[i] = lines[i].Substring(8);
                         do {
@@ -115,10 +120,10 @@ namespace ScriptEditor.CodeTranslation
         private static string ParseName(byte[] namelist, int name)
         {
             int strlen = (namelist[name - 5] << 8) + namelist[name - 6];
-            return System.Text.Encoding.ASCII.GetString(namelist, name - 4, strlen).TrimEnd('\0');
+            return Encoding.ASCII.GetString(namelist, name - 4, strlen).TrimEnd('\0');
         }
 
-        public static ProgramInfo Parse(string file, string path)
+        public ProgramInfo Parse(string file, string path)
         {
             File.WriteAllText(parserPath, file);
             lastStatus = parse_main(parserPath, path, Path.GetDirectoryName(path));
@@ -246,7 +251,7 @@ namespace ScriptEditor.CodeTranslation
         private static extern IntPtr FetchBuffer();
 #endif
 
-        public static bool Compile(string infile, out string output, List<Error> errors, bool preprocessOnly)
+        public bool Compile(string infile, out string output, List<Error> errors, bool preprocessOnly)
         {
             if (errors != null)
                 errors.Clear();
@@ -326,7 +331,7 @@ namespace ScriptEditor.CodeTranslation
             return success;
         }
 
-        public static string Decompile(string infile)
+        public string Decompile(string infile)
         {
             ProcessStartInfo psi=new ProcessStartInfo("resources\\int2ssl.exe", "\""+infile+"\" \""+decompilationPath+"\"");
             psi.UseShellExecute = false;

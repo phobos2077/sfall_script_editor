@@ -52,7 +52,8 @@ namespace ScriptEditor
                     e.Cancel = true;
                     break;
                 }
-                if (Compiler.Compile(s, out unused, null, false))
+                var compiler = new Compiler();
+                if (compiler.Compile(s, out unused, null, false))
                     failed = 0;
                 else
                     failed = 1;

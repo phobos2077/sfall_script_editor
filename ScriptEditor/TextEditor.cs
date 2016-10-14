@@ -158,7 +158,8 @@ namespace ScriptEditor
                 UpdateRecentList();
                 //If this is an int, decompile
                 if (string.Compare(Path.GetExtension(file), ".int", true) == 0) {
-                    string decomp = Compiler.Decompile(file);
+                    var compiler = new Compiler();
+                    string decomp = compiler.Decompile(file);
                     if (decomp == null) {
                         MessageBox.Show("Decompilation of '" + file + "' was not successful", "Error");
                         return null;
@@ -392,7 +393,8 @@ namespace ScriptEditor
                 return false;
             }
             List<Error> errors = new List<Error>();
-            bool success = Compiler.Compile(currentTab.filepath, out msg, errors, preprocess);
+            var compiler = new Compiler();
+            bool success = compiler.Compile(currentTab.filepath, out msg, errors, preprocess);
             foreach (ErrorType et in new ErrorType[] { ErrorType.Error, ErrorType.Warning, ErrorType.Message }) {
                 foreach (Error e in errors) {
                     if (e.type == et)
@@ -1183,7 +1185,8 @@ namespace ScriptEditor
         private void bwSyntaxParser_DoWork(object sender, System.ComponentModel.DoWorkEventArgs eventArgs)
         {
             WorkerArgs args = (WorkerArgs)eventArgs.Argument;
-            args.tab.parseInfo = Compiler.Parse(args.text, args.tab.filepath);
+            var compiler = new Compiler();
+            args.tab.parseInfo = compiler.Parse(args.text, args.tab.filepath);
             eventArgs.Result = args.tab;
             parserRunning = false;
         }
