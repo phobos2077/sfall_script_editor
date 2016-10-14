@@ -79,6 +79,33 @@ namespace ScriptEditor
             //treeView1.ContextMenuStrip = editorMenuStrip;
             ProgramInfo.LoadOpcodes();
         }
+        
+        protected override void WndProc(ref Message m)
+	    {
+	        if (m.Msg == NativeMethods.WM_SFALL_SCRIPT_EDITOR_OPEN) {
+	            ShowMe();
+	            if (File.Exists(NativeMethods.CommandLineFile)) {
+	            	var commandLineArgs = File.ReadAllLines(NativeMethods.CommandLineFile);
+	            	foreach (var file in commandLineArgs) {
+	            		Open(file, OpenType.File);
+	            	}
+	            }
+	        }
+	        base.WndProc(ref m);
+	    }
+        
+        private void ShowMe()
+	    {
+	        if (WindowState == FormWindowState.Minimized) {
+	            WindowState = FormWindowState.Normal;
+	        }
+	        // get our current "TopMost" value (ours will always be false though)
+	        bool top = TopMost;
+	        // make our form jump to the top of everything
+	        TopMost = true;
+	        // set it back to whatever it was
+	        TopMost = top;
+	    }
 
         private void TextEditor_Load(object sender, EventArgs e) {
             if(Settings.editorSplitterPosition!=-1) splitContainer1.SplitterDistance=Settings.editorSplitterPosition;
@@ -135,7 +162,7 @@ namespace ScriptEditor
                 //If this is an int, decompile
                 if(string.Compare(Path.GetExtension(file), ".int", true)==0) {
                     string decomp=Compiler.Decompile(file);
-                    if(decomp==null) {
+                    if (decomp==null) {
                         MessageBox.Show("Decompilation of '"+file+"' was not successful", "Error");
                         return null;
                     } else {
