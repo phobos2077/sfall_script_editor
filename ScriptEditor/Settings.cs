@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ScriptEditor
 {
@@ -9,10 +10,12 @@ namespace ScriptEditor
 
     public static class Settings
     {
-        //public static readonly string ProgramFolder = 
-        public static readonly string SettingsFolder = Path.Combine(Environment.CurrentDirectory, "settings");
+        public static readonly string ProgramFolder = Path.GetDirectoryName(Application.ExecutablePath);
+        public static readonly string SettingsFolder = Path.Combine(ProgramFolder, "settings");
+        public static readonly string ResourcesFolder = Path.Combine(ProgramFolder, "resources");
+
         private static readonly string SettingsPath = Path.Combine(SettingsFolder, "settings.dat");
-        private static readonly string preprocessPath = Path.Combine(Settings.SettingsFolder, "preprocess.ssl");
+        private static readonly string PreprocessPath = Path.Combine(SettingsFolder, "preprocess.ssl");
 
         const int MAX_RECENT = 30;
 
@@ -140,12 +143,22 @@ namespace ScriptEditor
         }
         public static void Load()
         {
-            if (!File.Exists(SettingsPath))
-                return;
-            recent.Clear();
-            BinaryReader br = new BinaryReader(File.OpenRead(SettingsPath));
-            LoadInternal(br);
-            br.Close();
+            if (!Directory.Exists(SettingsFolder)) {
+                Directory.CreateDirectory(SettingsFolder);
+            }
+            if (!Directory.Exists(ResourcesFolder)) {
+                Directory.CreateDirectory(ResourcesFolder);
+            }
+            var templatesFolder = Path.Combine(ResourcesFolder, "templates");
+            if (!Directory.Exists(templatesFolder)) {
+                Directory.CreateDirectory(templatesFolder);
+            }
+            if (File.Exists(SettingsPath)) {
+                recent.Clear();
+                BinaryReader br = new BinaryReader(File.OpenRead(SettingsPath));
+                LoadInternal(br);
+                br.Close();
+            }
         }
 
         private static void WriteWindowPos(BinaryWriter bw, int i)
@@ -190,9 +203,9 @@ namespace ScriptEditor
 
         public static string GetPreprocessedFile()
         {
-            if (!File.Exists(preprocessPath))
+            if (!File.Exists(PreprocessPath))
                 return null;
-            return File.ReadAllText(preprocessPath);
+            return File.ReadAllText(PreprocessPath);
         }
 
         public static string GetOutputPath(string infile)
@@ -224,7 +237,7 @@ namespace ScriptEditor
                 + (showDebug ? "-d " : "")
                 + (showLogo ? "" : "-l ")
                 + (shortCircuit ? "-s " : "")
-                + "\"" + Path.GetFileName(infile) + "\" -o \"" + (preprocess ? preprocessPath : GetOutputPath(infile)) + "\"";
+                + "\"" + Path.GetFileName(infile) + "\" -o \"" + (preprocess ? PreprocessPath : GetOutputPath(infile)) + "\"";
 #endif
         }
 

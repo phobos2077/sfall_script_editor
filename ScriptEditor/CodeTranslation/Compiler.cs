@@ -269,7 +269,8 @@ namespace ScriptEditor.CodeTranslation
             Directory.SetCurrentDirectory(origpath);
 #else
 
-            ProcessStartInfo psi = new ProcessStartInfo("resources\\compile.exe", Settings.GetSslcCommandLine(infile, preprocessOnly));
+            var exePath = Path.Combine(Settings.ResourcesFolder, "compile.exe");
+            ProcessStartInfo psi = new ProcessStartInfo(exePath, Settings.GetSslcCommandLine(infile, preprocessOnly));
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardInput = true;
             psi.UseShellExecute = false;
@@ -312,28 +313,13 @@ namespace ScriptEditor.CodeTranslation
 #if DLL_COMPILER
             output=output.Replace("\n", "\r\n");
 #endif
-
-            //Debugging section to locate scripts which fail to compile with optimization
-            /*if(!success||preprocessOnly) return success;
-            psi=new ProcessStartInfo(@"C:\Games\Fallout2\Tools\Mapper\scripts\compile.exe", "-O "+Settings.GetSslcCommandLine(infile, false));
-            psi.RedirectStandardOutput=true;
-            psi.UseShellExecute=false;
-            psi.CreateNoWindow=true;
-            psi.WorkingDirectory=Path.GetDirectoryName(infile);
-            p=Process.Start(psi);
-            output=p.StandardOutput.ReadToEnd();
-            p.WaitForExit();
-            if(p.ExitCode!=0) {
-                int iii=0;
-            }
-            p.Dispose();*/
-
             return success;
         }
 
         public string Decompile(string infile)
         {
-            ProcessStartInfo psi=new ProcessStartInfo("resources\\int2ssl.exe", "\""+infile+"\" \""+decompilationPath+"\"");
+            var exePath = Path.Combine(Settings.ResourcesFolder, "int2ssl.exe");
+            ProcessStartInfo psi = new ProcessStartInfo(exePath, "\"" + infile + "\" \"" + decompilationPath + "\"");
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
             Process p = Process.Start(psi);

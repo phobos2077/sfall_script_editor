@@ -32,7 +32,7 @@ namespace ScriptEditor
             InitializeComponent();
             Settings.SetupWindowPosition(SavedWindows.Main, this);
             // highlighting
-            FileSyntaxModeProvider fsmProvider = new FileSyntaxModeProvider(".//resources//"); // Create new provider with the highlighting directory.
+            FileSyntaxModeProvider fsmProvider = new FileSyntaxModeProvider(Settings.ResourcesFolder); // Create new provider with the highlighting directory.
             HighlightingManager.Manager.AddSyntaxModeFileProvider(fsmProvider); // Attach to the text editor.
             // folding timer
             timer = new Timer();
@@ -41,7 +41,7 @@ namespace ScriptEditor
             // Recent files
             UpdateRecentList();
             // Templates
-            foreach (string file in Directory.GetFiles("resources\\templates", "*.ssl")) {
+            foreach (string file in Directory.GetFiles(Path.Combine(Settings.ResourcesFolder, "templates"), "*.ssl")) {
                 ToolStripMenuItem mi = new ToolStripMenuItem(Path.GetFileNameWithoutExtension(file), null, delegate(object sender, EventArgs e) {
                     Open(file, OpenType.File, false, true);
                 });
@@ -64,13 +64,11 @@ namespace ScriptEditor
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == NativeMethods.WM_SFALL_SCRIPT_EDITOR_OPEN) {
+            if (m.Msg == SingleInstanceManager.WM_SFALL_SCRIPT_EDITOR_OPEN) {
                 ShowMe();
-                if (File.Exists(NativeMethods.CommandLineFile)) {
-                    var commandLineArgs = File.ReadAllLines(NativeMethods.CommandLineFile);
-                    foreach (var file in commandLineArgs) {
-                        Open(file, OpenType.File);
-                    }
+                var commandLineArgs = SingleInstanceManager.LoadCommandLine();
+                foreach (var file in commandLineArgs) {
+                    Open(file, OpenType.File);
                 }
             }
             base.WndProc(ref m);

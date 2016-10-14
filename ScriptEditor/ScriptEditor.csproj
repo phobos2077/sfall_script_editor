@@ -102,7 +102,7 @@
     <Compile Include="HeadsFrmPatcher.Designer.cs">
       <DependentUpon>HeadsFrmPatcher.cs</DependentUpon>
     </Compile>
-    <Compile Include="NativeMethods.cs" />
+    <Compile Include="SingleInstanceManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="CodeTranslation\ProgramInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,7 +16,6 @@ namespace ScriptEditor
         [STAThread]
         static void Main(string[] args)
         {
-            Directory.SetCurrentDirectory(Path.GetDirectoryName(Application.ExecutablePath));
             // check if another instance is already running
             if (mutex.WaitOne(TimeSpan.Zero, true)) {
                 Application.EnableVisualStyles();
@@ -27,17 +26,20 @@ namespace ScriptEditor
                 foreach (string s in args) {
                     te.Open(s, TextEditor.OpenType.File);
                 }
+                // reset working folder to EXE directory (to resolve possible issues in parse_main)
+                Directory.SetCurrentDirectory(Settings.ProgramFolder);
                 Application.Run(te);
                 mutex.ReleaseMutex();
             } else {
+                // only show message if opened normally without command line arguments
+                if (args.Length == 0) {
+                    MessageBox.Show("Another instance is already running!", "Sfall Script Editor");
+                }
+
                 // pass command line arguments via file
-                File.WriteAllLines(NativeMethods.CommandLineFile, args);
+                SingleInstanceManager.SaveCommandLine(args);
                 // send message to other instance
-                NativeMethods.PostMessage(
-                    (IntPtr)NativeMethods.HWND_BROADCAST,
-                    NativeMethods.WM_SFALL_SCRIPT_EDITOR_OPEN,
-                    IntPtr.Zero,
-                    IntPtr.Zero);
+                SingleInstanceManager.SendEditorOpenMessage();
             }
         }
     }
