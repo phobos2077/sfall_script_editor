@@ -952,3 +952,11 @@ mixed array_key(int arrayID, int index): - don't use it directly; it is generate
 int arrayexpr(mixed key, mixed value): - don't use it directly; it is used by compiler to create array expressions
 void save_array(mixed key, int arrayID): - array is saved (arrayID is associated with given "key")
 int load_array(mixed key): - load array from savegame data by the same key provided in "save_array"
+
+any sfall_func0(char* funcName) - calls scripting function with given name and no arguments
+any sfall_func1(char* funcName, arg1) - calls scripting function with given name and 1 argument
+any sfall_func2(char* funcName, arg1, arg2) - calls scripting function with given name and 2 arguments
+any sfall_func3(char* funcName, arg1, arg2, arg3) - calls scripting function with given name and 3 arguments
+any sfall_func4(char* funcName, arg1, arg2, arg3, arg4) - calls scripting function with given name and 4 arguments
+any sfall_func5(char* funcName, arg1, arg2, arg3, arg4, arg5) - calls scripting function with given name and 5 arguments
+any sfall_func6(char* funcName, arg1, arg2, arg3, arg4, arg5, arg6) - calls scripting function with given name and 6 arguments

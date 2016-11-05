@@ -692,6 +692,13 @@
         <Key word = "create_spatial" />
         <Key word = "art_exists" />
         <Key word = "obj_is_carrying_obj" />
+        <Key word = "sfall_func0" />
+		<Key word = "sfall_func1" />
+		<Key word = "sfall_func2" />
+		<Key word = "sfall_func3" />
+		<Key word = "sfall_func4" />
+		<Key word = "sfall_func5" />
+		<Key word = "sfall_func6" />
         
       </KeyWords>
       
@@ -739,6 +746,14 @@
         <Key word = "mstr_stat" />
         <Key word = "mstr_trait" />
         <Key word = "mstr_worldmap" />
+		
+        <Key word = "spatial_radius" />
+        <Key word = "critter_inven_obj2" />
+        <Key word = "intface_redraw" />
+        <Key word = "intface_hide" />
+        <Key word = "intface_show" />
+        <Key word = "intface_is_hidden" />
+        <Key word = "exec_map_update_scripts" />
         
       </KeyWords>
 
