@@ -129,7 +129,7 @@
         <Key word = "break" />
         <Key word = "continue" />
       </KeyWords>
-      
+
       <KeyWords name = "FalloutBaseFunctions" bold="false" italic="false" color="DarkMagenta">
         <Key word = "give_exp_points" />
         <Key word = "scr_return" />
@@ -410,7 +410,7 @@
         <Key word = "selectfilelist" />
         <Key word = "tokenize" />
       </KeyWords>
-      
+
       <KeyWords name = "SfallFunctions" bold="true" italic="false" color="DarkMagenta">
         <Key word = "read_byte" />
         <Key word = "read_short" />
@@ -678,7 +678,7 @@
         <Key word = "reg_anim_light" />
         <Key word = "reg_anim_change_fid" />
         <Key word = "reg_anim_take_out" />
-        <Key word = "reg_anim_turn_towards" />        
+        <Key word = "reg_anim_turn_towards" />
         <Key word = "metarule2_explosions" />
         <Key word = "register_hook_proc" />
         <Key word = "message_str_game" />
@@ -693,15 +693,15 @@
         <Key word = "art_exists" />
         <Key word = "obj_is_carrying_obj" />
         <Key word = "sfall_func0" />
-		<Key word = "sfall_func1" />
-		<Key word = "sfall_func2" />
-		<Key word = "sfall_func3" />
-		<Key word = "sfall_func4" />
-		<Key word = "sfall_func5" />
-		<Key word = "sfall_func6" />
-        
+        <Key word = "sfall_func1" />
+        <Key word = "sfall_func2" />
+        <Key word = "sfall_func3" />
+        <Key word = "sfall_func4" />
+        <Key word = "sfall_func5" />
+        <Key word = "sfall_func6" />
+
       </KeyWords>
-      
+
       <KeyWords name = "SfallMacros" bold="true" italic="true" color="DarkMagenta">
         <Key word = "create_array_list" />
         <Key word = "temp_array_list" />
@@ -724,8 +724,9 @@
         <Key word = "set_attack_explosion_radius" />
         <Key word = "set_attack_is_explosion" />
         <Key word = "set_attack_is_explosion_fire" />
+        <Key word = "set_explosion_radius" />
         <Key word = "key_pressed_vk" />
-        
+
         <Key word = "mstr_combat" />
         <Key word = "mstr_ai" />
         <Key word = "mstr_scrname" />
@@ -746,7 +747,7 @@
         <Key word = "mstr_stat" />
         <Key word = "mstr_trait" />
         <Key word = "mstr_worldmap" />
-		
+
         <Key word = "spatial_radius" />
         <Key word = "critter_inven_obj2" />
         <Key word = "intface_redraw" />
@@ -754,7 +755,35 @@
         <Key word = "intface_show" />
         <Key word = "intface_is_hidden" />
         <Key word = "exec_map_update_scripts" />
-        
+        <Key word = "set_ini_setting" />
+        <Key word = "floor2" />
+        <Key word = "item_weight" />
+        <Key word = "get_outline" />
+        <Key word = "set_outline" />
+        <Key word = "get_flags" />
+        <Key word = "set_flags" />
+        <Key word = "tile_refresh_display" />
+        <Key word = "outlined_object" />
+        <Key word = "set_dude_obj" />
+        <Key word = "real_dude_obj" />
+        <Key word = "get_ini_sections" />
+        <Key word = "get_ini_section" />
+        <Key word = "car_gas_amount" />
+        <Key word = "set_car_intface_art" />
+        <Key word = "get_cursor_mode" />
+        <Key word = "set_cursor_mode" />
+        <Key word = "display_stats" />
+        <Key word = "lock_is_jammed" />
+        <Key word = "unjam_lock" />
+        <Key word = "set_unjam_locks_time" />
+        <Key word = "get_map_enter_position" />
+        <Key word = "set_map_enter_position" />
+        <Key word = "set_rest_heal_time" />
+        <Key word = "set_rest_mode" />
+        <Key word = "attack_is_aimed" />
+        <Key word = "set_iface_tag_text" />
+        <Key word = "inventory_redraw" />
+
       </KeyWords>
 
       <KeyWords name = "OpKeywords" bold="false" italic="false" color="Indigo">
@@ -769,7 +798,7 @@
         <Key word = "false" />
         <Key word = "floor" />
       </KeyWords>
-      
+
       <KeyWords name = "Constants" bold="false" italic="false" color="DarkBlue">
         <Key word = "textshadow" />
         <Key word = "textunderline" />
@@ -790,7 +819,7 @@
         <Key word = "soundstreamed" />
         <Key word = "soundmono" />
         <Key word = "soundstereo" />
-        
+
         <Key word = "moviescale" />
         <Key word = "moviedirect" />
         <Key word = "moviecenter" />
