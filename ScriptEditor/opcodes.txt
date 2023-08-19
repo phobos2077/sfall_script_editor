@@ -828,8 +828,8 @@ void refresh_pc_art
 
 int get_attack_type
 
-int  play_sfall_sound(char* file, int loop)
-void stop_sfall_sound(int ptr)
+int  play_sfall_sound(char* file, int mode)
+void stop_sfall_sound(int soundID)
 
 array string_split(char* string, char* split)
 int   atoi(char* string)
@@ -935,7 +935,8 @@ int get_sfall_args() - Returns all hook arguments as a new temp array.
 void set_sfall_return(int value) - Used to return the new values from the script. Each time it's called it sets the next value, or if you've already set all return values it does nothing.
 void set_sfall_arg(int argnum, int value) - Changes argument value. This is usefull if you have several hook scripts attached to one hook point (see below).
 void register_hook(int hooktype) - Used from a normal global script if you want to run it at the same point a full hook script would normally run.
-void register_hook_proc(int hooktype, proc procedure) - The same as register_hook, except that you specifically define which procedure in the current script should be called as a hook (instead of "start").
+void register_hook_proc(int hooktype, procedure proc) - The same as register_hook, except that you specifically define which procedure in the current script should be called as a hook (instead of "start" by default).
+void register_hook_proc_spec(int hook, procedure proc) - Works very similar to register_hook_proc, except that it registers the current script at the end of the hook script execution chain (i.e. the script will be executed after all previously registered scripts for the same hook, including the hs_*.int script).
 
 // arrays
 

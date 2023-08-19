@@ -297,12 +297,17 @@ namespace ScriptEditor.CodeTranslation
                         }
 
                         Match m = Regex.Match(s, @"\[\w+\]\s*\<([^\>]+)\>\s*\:(\-?\d+):?(\-?\d+)?\:\s*(.*)");
-                        error.fileName = m.Groups[1].Value;
-                        error.line = int.Parse(m.Groups[2].Value);
-                        if (m.Groups[3].Value.Length > 0) {
-                            error.column = int.Parse(m.Groups[3].Value);
+                        int idx = 0;
+                        if (!m.Success) {
+                            m = Regex.Match(s, @"\[\w+\]\s*\<([^\>]+)\>\s*\<([^\>]+)\>\s*\:(\-?\d+):?(\-?\d+)?\:\s*(.*)");
+                            idx = 1;
                         }
-                        error.message = m.Groups[4].Value;
+                        error.fileName = m.Groups[1 + idx].Value;
+                        error.line = int.Parse(m.Groups[2 + idx].Value);
+                        if (m.Groups[3 + idx].Value.Length > 0) {
+                            error.column = int.Parse(m.Groups[3 + idx].Value);
+                        }
+                        error.message = m.Groups[4 + idx].Value;
                         if (error.fileName != "none" && !Path.IsPathRooted(error.fileName)) {
                             error.fileName = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(infile), error.fileName));
                         }

@@ -12,27 +12,26 @@ namespace ScriptEditor
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = "About sfall script editor";
-            this.labelProductName.Text = "sfall script editor";
+            this.Text = "About sfall Script Editor";
+            this.labelProductName.Text = "sfall Script Editor";
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = string.Empty;
             this.textBoxDescription.Text = string.Format(
-@"The sfall script compiler, for sfall {0}
-updated by phobos2077 at 2016.10.14
-
-Code editor control is from ICSharpCode.TextEditor 3.2.1 (LGPL)
+@"Code editor control is from ICSharpCode.TextEditor 3.2.1 (LGPL)
 http://www.icsharpcode.net/opensource/sd/
 Copyright 2002-2010 by AlphaSierraPapa, Christoph Wille
 
 Script compilation is handled by sslc sfall edition
+The sfall script compiler, for sfall 4.0 series
 
 Script preprocessing handled by mcpp 2.7.2 (BCD)
 Copyright (c) 1998, 2002-2008 Kiyoshi Matsui
 
-Script decompilation handled by int2ssl 8.3.0
+Script decompilation handled by int2ssl 8.4.7
 Copyright (C) Anchorite (TeamX), 2005-2009
-Continued by Nirran, phobos2077
+Continued by Nirran, phobos2077, Mr.Stalin (2014-2023)
+Crossplatformed by alexeevdv (2015)
 
 See licences.txt for licence texts
 ", AssemblyVersion);
