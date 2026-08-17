@@ -20,7 +20,7 @@ namespace ScriptEditor.CodeTranslation
         #region Imports from SSLC DLL
 
         [DllImport("resources\\parser.dll")]
-        private static extern int parse_main(string file, string orig, string dir);
+        private static extern int parse_main(string file, string orig, string dir, string def, string incdir, int backmode);
         [DllImport("resources\\parser.dll")]
         private static extern int numProcs();
         [DllImport("resources\\parser.dll")]
@@ -126,7 +126,7 @@ namespace ScriptEditor.CodeTranslation
         public ProgramInfo Parse(string file, string path)
         {
             File.WriteAllText(parserPath, file);
-            lastStatus = parse_main(parserPath, path, Path.GetDirectoryName(path));
+            lastStatus = parse_main(parserPath, path, Path.GetDirectoryName(path), null, null, 0);
             if (lastStatus >= 2) // preprocess failed
                 return null;
             ProgramInfo pi = (lastStatus == 1)

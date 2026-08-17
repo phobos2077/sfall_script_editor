@@ -849,6 +849,9 @@
         <Key word = "intface_is_shown" />
         <Key word = "get_interface_x" />
         <Key word = "get_interface_y" />
+        <Key word = "get_interface_width" />
+        <Key word = "get_interface_height" />
+        <Key word = "get_interface_id" />
         <Key word = "set_town_title" />
         <Key word = "message_box" />
         <Key word = "get_stat_min" />
@@ -868,6 +871,16 @@
         <Key word = "set_combat_free_move" />
         <Key word = "get_ini_config" />
         <Key word = "get_ini_config_db" />
+        <Key word = "string_find" />
+        <Key word = "reg_anim_animate_and_move" />
+        <Key word = "signal_close_game" />
+        <Key word = "art_frame_data" />
+        <Key word = "set_worldmap_heal_time" />
+        <Key word = "opcode_exists" />
+        <Key word = "set_fo1_hit_chance" />
+        <Key word = "remove_wm_town_names" />
+        <Key word = "encounter_detection" />
+        <Key word = "set_reaction_thresholds" />
       </KeyWords>
 
       <KeyWords name = "OpKeywords" bold="false" italic="false" color="Indigo">

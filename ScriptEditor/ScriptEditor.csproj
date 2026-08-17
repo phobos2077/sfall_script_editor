@@ -194,7 +194,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)\*SyntaxRules.xshd" "$(TargetDir)\resources\"
-copy "$(ProjectDir)\opcodes.txt" "$(TargetDir)\resources\"</PostBuildEvent>
+copy "$(ProjectDir)\opcodes.txt" "$(TargetDir)\resources\"
+copy "$(DevEnvDir)mspdb100.dll" "$(DevEnvDir)..\..\VC\bin\"
+"$(DevEnvDir)..\..\VC\bin\editbin.exe" /stack:4194304,16384 "$(TargetDir)$(TargetFileName)"
+del "$(DevEnvDir)..\..\VC\bin\mspdb100.dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
     <BaseAddress>4194304</BaseAddress>
