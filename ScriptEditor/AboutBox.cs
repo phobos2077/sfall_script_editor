@@ -22,15 +22,14 @@ namespace ScriptEditor
 http://www.icsharpcode.net/opensource/sd/
 Copyright 2002-2010 by AlphaSierraPapa, Christoph Wille
 
-Script compilation is handled by sslc sfall edition
-The sfall script compiler, for sfall 4.0 series
+Script compilation handled by sslc sfall edition 4.x series
 
 Script preprocessing handled by mcpp 2.7.2 (BCD)
 Copyright (c) 1998, 2002-2008 Kiyoshi Matsui
 
-Script decompilation handled by int2ssl 8.4.7
+Script decompilation handled by int2ssl 8.4.9
 Copyright (C) Anchorite (TeamX), 2005-2009
-Continued by Nirran, phobos2077, Mr.Stalin (2014-2023)
+Continued by Nirran, phobos2077, Mr.Stalin (2014-2025)
 Crossplatformed by alexeevdv (2015)
 
 See licences.txt for licence texts
