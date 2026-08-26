@@ -582,14 +582,12 @@
         <Key word = "get_sfall_arg" />
         <Key word = "set_sfall_arg" />
         <Key word = "get_sfall_args" />
-        <Key word = "set_sfall_arg" />
         <Key word = "set_sfall_return" />
         <Key word = "init_hook" />
         <Key word = "set_unspent_ap_bonus" />
         <Key word = "get_unspent_ap_bonus" />
         <Key word = "set_unspent_ap_perk_bonus" />
         <Key word = "get_unspent_ap_perk_bonus" />
-        <Key word = "div" />
         <Key word = "sqrt" />
         <Key word = "abs" />
         <Key word = "sin" />
@@ -656,14 +654,13 @@
         <Key word = "atoi" />
         <Key word = "atof" />
         <Key word = "get_tile_fid" />
-        <Key word = "get_tile_ground_fid" />
-        <Key word = "get_tile_roof_fid" />
         <Key word = "modified_ini" />
         <Key word = "force_aimed_shots" />
         <Key word = "disable_aimed_shots" />
         <Key word = "mark_movie_played" />
         <Key word = "get_last_target" />
         <Key word = "get_last_attacker" />
+        <Key word = "block_combat" />
         <Key word = "tile_under_cursor" />
         <Key word = "gdialog_get_barter_mod" />
         <Key word = "set_inven_ap_cost" />
@@ -698,6 +695,7 @@
         <Key word = "create_spatial" />
         <Key word = "art_exists" />
         <Key word = "obj_is_carrying_obj" />
+
         <Key word = "sfall_func0" />
         <Key word = "sfall_func1" />
         <Key word = "sfall_func2" />
@@ -707,7 +705,6 @@
         <Key word = "sfall_func6" />
         <Key word = "sfall_func7" />
         <Key word = "sfall_func8" />
-
       </KeyWords>
 
       <KeyWords name = "SfallMacros" bold="true" italic="true" color="DarkMagenta">
@@ -715,6 +712,8 @@
         <Key word = "temp_array_list" />
         <Key word = "create_array_map" />
         <Key word = "temp_array_map" />
+        <Key word = "create_lookup_map" />
+        <Key word = "temp_lookup_map" />
         <Key word = "array_is_map" />
         <Key word = "list_saved_arrays" />
         <Key word = "unsave_array" />
@@ -725,6 +724,8 @@
         <Key word = "sort_array_reverse" />
         <Key word = "reverse_array" />
         <Key word = "shuffle_array" />
+        <Key word = "sort_map_value" />
+        <Key word = "sort_map_reverse" />
         <Key word = "unset_array" />
 
         <Key word = "set_attack_explosion_pattern" />
@@ -759,6 +760,19 @@
         <Key word = "mstr_stat" />
         <Key word = "mstr_trait" />
         <Key word = "mstr_worldmap" />
+        <Key word = "mstr_character" />
+
+        <Key word = "party_member_list_critters" />
+        <Key word = "party_member_list_all" />
+        <Key word = "use_item_on_dude" />
+        <Key word = "distance_objs" />
+        <Key word = "check_pid" />
+        <Key word = "set_weapon_unusable" />
+        <Key word = "set_weapon_usable" />
+        <Key word = "weapon_is_unusable" />
+        <Key word = "weapon_attack_mode" />
+        <Key word = "get_tile_ground_fid" />
+        <Key word = "get_tile_roof_fid" />
 
         <Key word = "get_metarule_table" />
         <Key word = "metarule_exist" />
@@ -894,6 +908,9 @@
         <Key word = "true" />
         <Key word = "false" />
         <Key word = "floor" />
+        <Key word = "andalso" />
+        <Key word = "orelse" />
+        <Key word = "div" />
       </KeyWords>
 
       <KeyWords name = "Constants" bold="false" italic="false" color="DarkBlue">
