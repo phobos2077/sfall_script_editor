@@ -770,7 +770,10 @@
         <Key word = "set_weapon_unusable" />
         <Key word = "set_weapon_usable" />
         <Key word = "weapon_is_unusable" />
+        <Key word = "weapon_attack_mode1" />
+        <Key word = "weapon_attack_mode2" />
         <Key word = "weapon_attack_mode" />
+        <Key word = "get_tile_fid_ext" />
         <Key word = "get_tile_ground_fid" />
         <Key word = "get_tile_roof_fid" />
 
@@ -779,6 +782,8 @@
         <Key word = "spatial_radius" />
         <Key word = "critter_inven_obj2" />
         <Key word = "intface_redraw" />
+        <Key word = "interface_redraw_all" />
+        <Key word = "interface_redraw_win" />
         <Key word = "intface_hide" />
         <Key word = "intface_show" />
         <Key word = "intface_is_hidden" />
@@ -854,6 +859,13 @@
         <Key word = "get_text_width" />
         <Key word = "string_compare" />
         <Key word = "string_compare_locale" />
+        <Key word = "string_format1" />
+        <Key word = "string_format2" />
+        <Key word = "string_format3" />
+        <Key word = "string_format4" />
+        <Key word = "string_format5" />
+        <Key word = "string_format6" />
+        <Key word = "string_format7" />
         <Key word = "string_format" />
         <Key word = "objects_in_radius" />
         <Key word = "tile_by_position" />
@@ -861,22 +873,40 @@
         <Key word = "string_toupper" />
         <Key word = "set_terrain_name" />
         <Key word = "intface_is_shown" />
+        <Key word = "get_interface_rect" />
         <Key word = "get_interface_x" />
         <Key word = "get_interface_y" />
         <Key word = "get_interface_width" />
         <Key word = "get_interface_height" />
         <Key word = "get_interface_id" />
         <Key word = "set_town_title" />
+        <Key word = "message_box1" />
+        <Key word = "message_box2" />
+        <Key word = "message_box3" />
+        <Key word = "message_box4" />
         <Key word = "message_box" />
         <Key word = "get_stat_min" />
         <Key word = "get_stat_max" />
+        <Key word = "get_pc_stat_max" />
+        <Key word = "get_pc_stat_min" />
+        <Key word = "get_npc_stat_max" />
+        <Key word = "get_npc_stat_min" />
         <Key word = "interface_art_draw" />
+        <Key word = "interface_art_draw_frame" />
+        <Key word = "interface_art_draw_ex" />
         <Key word = "interface_print" />
+        <Key word = "interface_print_width" />
         <Key word = "combat_data" />
         <Key word = "win_fill_color" />
+        <Key word = "clear_window" />
         <Key word = "interface_overlay" />
+        <Key word = "overlay_create" />
+        <Key word = "overlay_clear" />
+        <Key word = "overlay_clear_rectangle" />
+        <Key word = "overlay_destroy" />
         <Key word = "set_quest_failure_value" />
         <Key word = "set_scr_name" />
+        <Key word = "unset_scr_name" />
         <Key word = "obj_is_openable" />
         <Key word = "get_terrain_name" />
         <Key word = "get_current_terrain_name" />
@@ -886,6 +916,7 @@
         <Key word = "get_ini_config" />
         <Key word = "get_ini_config_db" />
         <Key word = "string_find" />
+        <Key word = "string_find_from" />
         <Key word = "reg_anim_animate_and_move" />
         <Key word = "signal_close_game" />
         <Key word = "art_frame_data" />
@@ -895,6 +926,14 @@
         <Key word = "remove_wm_town_names" />
         <Key word = "encounter_detection" />
         <Key word = "set_reaction_thresholds" />
+
+        <Key word = "set_horrigan_days" />
+        <Key word = "clear_keyboard_buffer" />
+        <Key word = "get_current_save_slot" />
+        <Key word = "set_current_save_slot" />
+        <Key word = "get_current_quick_save_page" />
+        <Key word = "get_current_quick_save_slot" />
+        <Key word = "set_current_quick_save_slot" />
       </KeyWords>
 
       <KeyWords name = "OpKeywords" bold="false" italic="false" color="Indigo">
