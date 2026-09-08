@@ -441,7 +441,7 @@ int map_var(unsigned int var_index) - Returns the value of a map-global variable
 string message_str(int list, int msg_num) - Returns a string from the message module for a given list and a given # (msg_num).
 int move_to(ObjectPtr obj, int tile_num, 0-2 elev) - Immediately moves an object (obj) to the given tile number and elevation on the current map.
 int move_obj_inven_to_obj(ObjectPtr srcObj, ObjectPtr destObj) - Moves an object’s (srcObj) entire inventory into another object’s (destObj) inventory.
-ObjectPtr obj_art_fid(ObjectPtr obj) - Returns the fid # (used to index art) of a given object (obj). 
+ObjectPtr obj_art_fid(ObjectPtr obj) - Returns the fid # (used to index art) of a given object (obj).
 ObjectPtr obj_being_used_with() - Returns a pointer to the object being used on another object.
 boolean obj_can_hear_obj(ObjectPtr src_obj, ObjectPtr dst_obj) - Returns True if the source object (src_obj) is capable of hearing the destination object (dst_obj). This includes distance factors, current activity (standing/walking/running), and skill use (stealth/etc.).
 boolean obj_can_see_obj(ObjectPtr src_obj, ObjectPtr dst_obj) - Returns True if the source object (src_obj) has line-of-sight (LOS) with the destination object (dst_obj). This also takes into account perception & stealth rolls of the objects are critters.
@@ -469,7 +469,7 @@ void party_remove(ObjectPtr who) - Removes a given critter (who) from the list o
 void pickup_obj(ObjectPtr obj) - Causes the critter self-object to animate and attempt to pick up a given object (obj). If used in regard to a critter, this flag is pinged when a steal detect fails. In other words when detected stealing, pickup_obj is called for the person you were stealing from.
 void play_gmovie() - Plays one of the Fallout movies (full-screen, compressed, etc.).
 void play_sfx() - Starts a new sound effect to be played on the queue.
-void poison(ObjectPtr who, int amount) - Modifies the critter's poison level by a given amount. Positive numbers increase their level of poisoning, negative numbers decrease it. 
+void poison(ObjectPtr who, int amount) - Modifies the critter's poison level by a given amount. Positive numbers increase their level of poisoning, negative numbers decrease it.
 int|string proto_data(int pid, int data_member) - Returns the value of a data-member of a given prototype (pid).
 void radiation_dec(ObjectPtr who, int amount) - Decrements a critter’s radiation counter by a given amount. NOTE: This should only be done to the player (obj_dude) in Fallout due to design restrictions!
 void radiation_inc(ObjectPtr who, int amount) - Increments a critter’s radiation counter by a given amount. NOTE: This should only be done to the player (obj_dude) in Fallout due to design restrictions!
@@ -526,31 +526,31 @@ void wield_obj_critter(ObjectPtr who, ObjectPtr obj) - Sets up an animation caus
 void wm_area_set_pos(int areaIdx, int xPos, int yPos) - Sets the World Map coordinates for a given area/town (areaIdx) to a given x and y position.
 void world_map() - Sends a request for the game engine to bring up the World Map screen, for the player to move around to different locations.
 int world_map_x_pos() - Returns the current X Position of the party on the World Map.
-int world_map_y_pos() - Returns the current Y Position of the party on the World Map. 
+int world_map_y_pos() - Returns the current Y Position of the party on the World Map.
 
 
 // SFALL OPCODES:
 
-int   read_byte(int address)
-int   read_short(int address)
-int   read_int(int address)
-char* read_string(int address)
+int  read_byte(int address)
+int  read_short(int address)
+int  read_int(int address)
+string read_string(int address)
 
-void  write_byte(int address, int value)
-void  write_short(int address, int value)
-void  write_int(int address, int value)
-void  write_string(int address, char* value)
+void write_byte(int address, int value)
+void write_short(int address, int value)
+void write_int(int address, int value)
+void write_string(int address, string value)
 
-void  call_offset_v0(int address)
-void  call_offset_v1(int address, int arg1)
-void  call_offset_v2(int address, int arg1, int arg2)
-void  call_offset_v3(int address, int arg1, int arg2, int arg3)
-void  call_offset_v4(int address, int arg1, int arg2, int arg3, int arg4)
-int   call_offset_r0(int address)
-int   call_offset_r1(int address, int arg1)
-int   call_offset_r2(int address, int arg1, int arg2)
-int   call_offset_r3(int address, int arg1, int arg2, int arg3)
-int   call_offset_r4(int address, int arg1, int arg2, int arg3, int arg4)
+void call_offset_v0(int address)
+void call_offset_v1(int address, int arg1)
+void call_offset_v2(int address, int arg1, int arg2)
+void call_offset_v3(int address, int arg1, int arg2, int arg3)
+void call_offset_v4(int address, int arg1, int arg2, int arg3, int arg4)
+int  call_offset_r0(int address)
+int  call_offset_r1(int address, int arg1)
+int  call_offset_r2(int address, int arg1, int arg2)
+int  call_offset_r3(int address, int arg1, int arg2, int arg3)
+int  call_offset_r4(int address, int arg1, int arg2, int arg3, int arg4)
 
 void set_pc_base_stat(int StatID, int value)
 void set_pc_extra_stat(int StatID, int value)
@@ -564,7 +564,7 @@ int  get_critter_extra_stat(CritterPtr, int StatID)
 void set_critter_skill_points(int critter, int skill, int value)
 int  get_critter_skill_points(int critter, int skill)
 void set_available_skill_points(int value)
-int  get_available_skill_points()
+int  get_available_skill_points
 void mod_skill_points_per_level(int value)
 
 void set_stat_max(int stat, int value)
@@ -574,49 +574,49 @@ void set_pc_stat_min(int stat, int value)
 void set_npc_stat_max(int stat, int value)
 void set_npc_stat_min(int stat, int value)
 
-int  input_funcs_available()
+int  input_funcs_available
 int  key_pressed(int dxScancode)
 void tap_key(int dxScancode)
-int  get_mouse_x()
-int  get_mouse_y()
-int  get_mouse_buttons()
-int  get_window_under_mouse()
+int  get_mouse_x
+int  get_mouse_y
+int  get_mouse_buttons
+int  get_window_under_mouse
 
-int get_year()
+int get_year
 
-bool game_loaded()
+bool game_loaded
 
-bool graphics_funcs_available()
-int  load_shader(char* path)
+bool graphics_funcs_available
+int  load_shader(string path)
 void free_shader(int ID)
 void activate_shader(int ID)
 void deactivate_shader(int ID)
-void set_shader_int(int ID, char* param, int value)
-void set_shader_float(int ID, char* param, float value)
-void set_shader_vector(int ID, char* param, float f1, float f2, float f3, float f4)
-int get_shader_version()
+void set_shader_int(int ID, string param, int value)
+void set_shader_float(int ID, string param, float value)
+void set_shader_vector(int ID, string param, float f1, float f2, float f3, float f4)
+int  get_shader_version
 void set_shader_mode(int mode)
 void force_graphics_refresh(bool enabled)
-int get_shader_texture(int ID, int texture)
-void set_shader_texture(int ID, char* param, int texID)
+int  get_shader_texture(int ID, int texture)
+void set_shader_texture(int ID, string param, int texID)
 
 void set_global_script_repeat(int frames)
 void set_global_script_type(int type)
-int available_global_script_types()
+int  available_global_script_types
 
-bool in_world_map()
+bool in_world_map
 
 void force_encounter(int map)
 void force_encounter_with_flags(int map, int flags)
 void set_map_time_multi(float multi)
 
 void set_world_map_pos(int x, int y)
-int get_world_map_x_pos()
-int get_world_map_y_pos()
+int  get_world_map_x_pos
+int  get_world_map_y_pos
 
-void set_dm_model(char* name)
-void set_df_model(char* name)
-void set_movie_path(char* filename, int movieid)
+void set_dm_model(string name)
+void set_df_model(string name)
+void set_movie_path(string filename, int movieid)
 
 void set_perk_image(int perkID, int value)
 void set_perk_ranks(int perkID, int value)
@@ -635,48 +635,48 @@ void set_perk_chr(int perkID, int value)
 void set_perk_int(int perkID, int value)
 void set_perk_agl(int perkID, int value)
 void set_perk_lck(int perkID, int value)
-void set_perk_name(int perkID, char* value)
-void set_perk_desc(int perkID, char* value)
+void set_perk_name(int perkID, string value)
+void set_perk_desc(int perkID, string value)
 void set_perk_freq(int value)
 
 void set_pipboy_available(int available)
 
-int get_kill_counter(int critterType)
+int  get_kill_counter(int critterType)
 void mod_kill_counter(int critterType, int amount)
 
-int get_perk_owed()
+int  get_perk_owed
 void set_perk_owed(int value)
-int get_perk_available(int perk)
+int  get_perk_available(int perk)
 
-int get_critter_current_ap(CritterPtr)
+int  get_critter_current_ap(CritterPtr)
 void set_critter_current_ap(CritterPtr, int ap)
 
-int  active_hand()
-void toggle_active_hand()
+int  active_hand
+void toggle_active_hand
 
-void set_weapon_knockback(WeaponPtr, int type, float value)
-void set_target_knockback(CritterPtr, int type, float value)
-void set_attacker_knockback(CritterPtr, int type, float value)
+void set_weapon_knockback(WeaponPtr, int type, int/float value)
+void set_target_knockback(CritterPtr, int type, int/float value)
+void set_attacker_knockback(CritterPtr, int type, int/float value)
 void remove_weapon_knockback(WeaponPtr)
 void remove_target_knockback(CritterPtr)
 void remove_attacker_knockback(CritterPtr)
 
-void  set_sfall_global(string/int varname, int/float value)
-int   get_sfall_global_int(string/int varname)
+void set_sfall_global(string/int varname, int/float value)
+int  get_sfall_global_int(string/int varname)
 float get_sfall_global_float(string/int varname)
-int   create_array(int elementcount, int elementsize)
-void  set_array(int array, any element, any value)
-any   get_array(int array, any element)
-void  free_array(int array)
-int   len_array(int array)
-void  resize_array(int array, int newelementcount)
-int   temp_array(int elementcount, int elementsize)
-void  fix_array(int array)
-int   scan_array(int array, int/float var)
-int   array_key(int array, int index)
-int   arrayexpr(any key, any value)
-void  save_array(any key, int array)
-int   load_array(any key)
+int  create_array(int element_count, int flags)
+void set_array(int array, any element, any value)
+any  get_array(int array, any element)
+void free_array(int array)
+int  len_array(int array)
+void resize_array(int array, int newelementcount)
+int  temp_array(int element_count, int flags)
+void fix_array(int array)
+int  scan_array(int array, int/float var)
+void save_array(any key, int array)
+int  load_array(any key)
+int  array_key(int array, int index)
+int  arrayexpr(any key, any value)
 
 void set_pickpocket_max(int percentage)
 void set_hit_chance_max(int percentage)
@@ -691,36 +691,36 @@ void set_base_skill_mod(int max)
 void set_critter_pickpocket_mod(CritterPtr, int max, int mod)
 void set_base_pickpocket_mod(int max, int mod)
 
-int  eax_available()
+int  eax_available
 void set_eax_environment(int environment)
 
-void inc_npc_level(char* npc)
-int  get_npc_level(char* npc)
+void inc_npc_level(int pid/string name)
+int  get_npc_level(int pid/string name)
 
-int get_viewport_x()
-int get_viewport_y()
+int  get_viewport_x
+int  get_viewport_y
 void set_viewport_x(int view_x)
 void set_viewport_y(int view_y)
 
-int   get_ini_setting(char* setting)
-char* get_ini_string(char* setting)
+int  get_ini_setting(string setting)
+string get_ini_string(string setting)
 
-int get_game_mode()
+int  get_game_mode
 
-int get_uptime()
+int  get_uptime
 
 void set_car_current_town(int town)
 
-void set_fake_perk(char* name, int level, int image, char* desc)
-void set_fake_trait(char* name, int active, int image, char* desc)
-void set_selectable_perk(char* name, int active, int image, char* desc)
-void set_perkbox_title(char* title)
-void hide_real_perks()
-void show_real_perks()
-int has_fake_perk(char* name)
-int has_fake_trait(char* name)
+void set_fake_perk(string name, int level, int image, string desc)
+void set_fake_trait(string name, int active, int image, string desc)
+void set_selectable_perk(string name, int active, int image, string desc)
+void set_perkbox_title(string title)
+void hide_real_perks
+void show_real_perks
+int  has_fake_perk(string name)
+int  has_fake_trait(string name)
 void perk_add_mode(int type)
-void clear_selectable_perks()
+void clear_selectable_perks
 void remove_trait(int traitID)
 
 void set_pyromaniac_mod(int bonus)
@@ -739,110 +739,109 @@ void set_critical_table(int crittertype, int bodypart, int level, int valuetype,
 int  get_critical_table(int crittertype, int bodypart, int level, int valuetype)
 void reset_critical_table(int crittertype, int bodypart, int level, int valuetype)
 
-int   get_sfall_arg()
-void  set_sfall_arg(int arg, int value)
-array get_sfall_args()
-void  set_sfall_arg(int arg, int value)
-void  set_sfall_return(int value)
-int   init_hook()
+int  get_sfall_arg
+array get_sfall_args
+void set_sfall_arg(int argnum, int value)
+void set_sfall_return(any value)
+int  init_hook
 
 void set_unspent_ap_bonus(int multiplier)
-int  get_unspent_ap_bonus()
+int  get_unspent_ap_bonus
 void set_unspent_ap_perk_bonus(int multiplier)
-int  get_unspent_ap_perk_bonus()
+int  get_unspent_ap_perk_bonus
 
 float sqrt(float)
-float abs(float)
+int/float abs(int/float)
 float sin(float)
 float cos(float)
 float tan(float)
 float arctan(float x, float y)
 float log(float)
 float exponent(float)
-int ceil(float)
-int round(float)
+int  ceil(float)
+int  round(float)
 
-void set_palette(char* path)
+void set_palette(string path)
 
 void remove_script(objptr)
 void set_script(objptr, int scriptid)
-int get_script(objptr)
+int  get_script(objptr)
 
-int nb_create_char()
+int  nb_create_char
 
-int   fs_create(string path, int size)
-int   fs_copy(string path, string source)
-int   fs_find(string path)
-void  fs_write_byte(int id, int data)
-void  fs_write_short(int id, int data)
-void  fs_write_int(int id, int data)
-void  fs_write_float(int id, int data)
-void  fs_write_string(int id, string data)
-void  fs_write_bstring(int id, string data)
-int   fs_read_byte(int id)
-int   fs_read_short(int id)
-int   fs_read_int(int id)
+int  fs_create(string path, int size)
+int  fs_copy(string path, string source)
+int  fs_find(string path)
+void fs_write_byte(int id, int data)
+void fs_write_short(int id, int data)
+void fs_write_int(int id, int data)
+void fs_write_float(int id, int data)
+void fs_write_string(int id, string data)
+void fs_write_bstring(int id, string data)
+int  fs_read_byte(int id)
+int  fs_read_short(int id)
+int  fs_read_int(int id)
 float fs_read_float(int id)
-void  fs_delete(int id)
-int   fs_size(int id)
-int   fs_pos(int id)
-void  fs_seek(int id, int pos)
-void  fs_resize(int id, int size)
+void fs_delete(int id)
+int  fs_size(int id)
+int  fs_pos(int id)
+void fs_seek(int id, int pos)
+void fs_resize(int id, int size)
 
-int  get_proto_data(objptr, int offset)
-void set_proto_data(objptr, int offset, int value)
+int  get_proto_data(int pid, int offset)
+void set_proto_data(int pid, int offset, int value)
 
 void set_self(objptr)
 void register_hook(int hook)
 
-int   list_begin(int type)
-int   list_next(int listid)
-void  list_end(int listid)
+int  list_begin(int type)
+int  list_next(int listid)
+void list_end(int listid)
 array list_as_array(int type)
 
-int sfall_ver_major()
-int sfall_ver_minor()
-int sfall_ver_build()
+int  sfall_ver_major
+int  sfall_ver_minor
+int  sfall_ver_build
 
 void hero_select_win(int)
 void set_hero_race(int style)
 void set_hero_style(int style)
 
-void set_critter_burst_disable(int critter, int disable)
+void set_critter_burst_disable(objptr critter, int disable)
 
 int  get_weapon_ammo_pid(objptr weapon)
 void set_weapon_ammo_pid(objptr weapon, int pid)
 int  get_weapon_ammo_count(objptr weapon)
 void set_weapon_ammo_count(objptr weapon, int count)
 
-int get_screen_width()
-int get_screen_height()
+int  get_screen_width
+int  get_screen_height
 
-void stop_game()
-void resume_game()
-void create_message_window(char* message)
+void stop_game
+void resume_game
+void create_message_window(string message)
 
-int get_light_level()
+int  get_light_level
 
 void refresh_pc_art
 
-int get_attack_type
+int  get_attack_type
 
-int  play_sfall_sound(char* file, int mode)
+int  play_sfall_sound(string file, int mode)
 void stop_sfall_sound(int soundID)
 
-array string_split(char* string, char* split)
-int   atoi(char* string)
-float atof(char* string)
-char* substr(char* string, int start, int length)
-int   strlen(char* string)
-char* sprintf(char* format, any value)
-int   charcode(char* string)
-int   typeof(any value)
+array  string_split(string string, string split)
+int  atoi(string string)
+float atof(string string)
+string substr(string string, int start, int length)
+int  strlen(string string)
+string sprintf(string format, any value)
+int  charcode(string string)
+int  typeof(any value)
 
-int get_tile_fid(int tile)
+int  get_tile_fid(int tileData)
 
-int modified_ini
+int  modified_ini
 
 void force_aimed_shots(int pid)
 void disable_aimed_shots(int pid)
@@ -851,10 +850,11 @@ void mark_movie_played(int id)
 
 objptr get_last_target(objptr critter)
 objptr get_last_attacker(objptr critter)
+void block_combat(int enable)
 
-int tile_under_cursor
-int gdialog_get_barter_mod
-void set_inven_ap_cost
+int  tile_under_cursor
+int  gdialog_get_barter_mod
+void set_inven_ap_cost(int cost)
 
 void reg_anim_combat_check(int enable)
 void reg_anim_destroy(objptr object)
@@ -864,27 +864,49 @@ void reg_anim_change_fid(objptr object, int FID, int delay)
 void reg_anim_take_out(objptr object, int holdFrameID, int delay)
 void reg_anim_turn_towards(objptr object, int tile/targetObj, int delay)
 
-int metarule2_explosions(objptr object)
+int  metarule2_explosions(objptr object)
 
 void register_hook_proc(int hook, procedure proc)
 
-char* message_str_game(int fileId, int messageId)
-int sneak_success
-int tile_light(int elevation, int tileNum)
+string message_str_game(int fileId, int messageId)
+int  sneak_success
+int  tile_light(int elevation, int tileNum)
+objptr obj_blocking_line(objptr objFrom, int tileTo, int blockingType)
+objptr obj_blocking_tile(int tileNum, int elevation, int blockingType)
+array tile_get_objs(int tileNum, int elevation)
+array party_member_list(int includeHidden)
+array path_find_to(objptr objFrom, int tileTo, int blockingType)
+objptr create_spatial(int scriptID, int tile, int elevation, int radius)
+int  art_exists(int artFID)
+int  obj_is_carrying_obj(objptr invenObj, objptr itemObj)
+
+any  sfall_func0(string funcName)
+any  sfall_func1(string funcName, arg1)
+any  sfall_func2(string funcName, arg1, arg2)
+any  sfall_func3(string funcName, arg1, arg2, arg3)
+any  sfall_func4(string funcName, arg1, arg2, arg3, arg4)
+any  sfall_func5(string funcName, arg1, arg2, arg3, arg4, arg5)
+any  sfall_func6(string funcName, arg1, arg2, arg3, arg4, arg5, arg6)
+
+void register_hook_proc_spec(int hook, procedure proc)
+void reg_anim_callback(procedure proc)
+
+any  sfall_func7(string funcName, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+any  sfall_func8(string funcName, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 
 
 // SFALL OPCODES with descriptions (will override entries from above)
 
-int game_loaded() - returns 1 the first time it is called after a new game or game load, and 0 any time after.
-int get_ini_setting(string setting) - reads an integer value from an ini file in the fallout directory. 
-string get_ini_string(string setting) - reads a string value from an ini file in the fallout directory. 
-int get_game_mode() - is a more flexible version of in_world_map. It will return a set of flags indicating which mode the game is currently in. 
-int get_uptime() - is just a wrapper around the windows GetTickCount() function. It's useful for making time fade effects in shaders, since they already have access to the current tick count.
-void set_self(int obj)  - overrides the scripts self_obj for the next function call. 
-void mod_skill_points_per_level(int x) - accepts a value of between -100 and 100, and modifies the number of skill points the player recieves when they level up. 
-void seq_perk_freq(int x) - sets the number of levels between each perk. 
-ObjectPtr get_last_target(objptr) - will return the last critter to be deliberately attacked 
-ObjectPtr get_last_attacker(objptr) - will return the last critter to deliberately launch an attack against the argument critter. 
+int game_loaded - returns 1 the first time it is called after a new game or game load, and 0 any time after.
+int get_ini_setting(string setting) - reads an integer value from an ini file in the fallout directory.
+string get_ini_string(string setting) - reads a string value from an ini file in the fallout directory.
+int get_game_mode - is a more flexible version of in_world_map. It will return a set of flags indicating which mode the game is currently in.
+int get_uptime - is just a wrapper around the windows GetTickCount() function. It's useful for making time fade effects in shaders, since they already have access to the current tick count.
+void set_self(int obj)  - overrides the scripts self_obj for the next function call.
+void mod_skill_points_per_level(int x) - accepts a value of between -100 and 100, and modifies the number of skill points the player recieves when they level up.
+void seq_perk_freq(int x) - sets the number of levels between each perk.
+ObjectPtr get_last_target(objptr) - will return the last critter to be deliberately attacked
+ObjectPtr get_last_attacker(objptr) - will return the last critter to deliberately launch an attack against the argument critter.
 void set_base_pickpocket_mod(int max, int mod) - changes maximum chance of success and chance mod for each steal attempt
 void set_critter_pickpocket_mod(CritterPtr, int max, int mod) - the same as set_base_pickpocket, but applies only to specific critter
 void reg_anim_combat_check  - allows to enable all reg_anim_* functions in combat (including vanilla functions) if set to 0. It is automatically reset at the end of each frame, so you need to call it before "reg_anim_begin" - "reg_anim_end" block.
@@ -894,6 +916,7 @@ void reg_anim_light(object, light, delay)  - change light of any object. light a
 void reg_anim_change_fid(object, fid, delay)  - should work like art_change_fid_num but in reg_anim sequence
 void reg_anim_take_out(object, holdFrameID, delay)  - plays "take out weapon" animation for given holdFrameID. It is not required to have such weapon in critter's inventory.
 void reg_anim_turn_towards(object, tile/target, delay)  - makes object change it's direction to face given tile num or target object.
+void reg_anim_callback(procedure proc) - adds the given procedure to an animation sequence-list and executes it in the registered sequence.
 int metarule2_explosions(int arg1, int arg2) - was made as a dirty easy hack to allow dynamically change some explosion parameters (ranged attack). All changed parameters are reset to vanilla state automatically after each attack action. Following macros are available in sfall.h:
 void set_attack_explosion_pattern(x, y)  - currently y is not used and x means: 1 - reduced explosion pattern (3 effects are spawned instead of 7), 0 - full pattern
 void set_attack_explosion_art(x, y)  - y not used and x is a misc frame ID (last 3 bytes, without object type) to use for the next explosion.
@@ -901,10 +924,10 @@ void set_attack_explosion_radius(x)  - changes radius at which explosion will hi
 void set_attack_is_explosion_fire  - if you call this right before using a weapon with fire damage type, it will produce explosion effects (and radius damage) just like "explosion" type, but all targets will still recieve fire damage.
 array string_split(string, split) - takes a string and a seperator, searches the string for all instances of the seperator, and returns a temp array filled with the pieces of the string split at each instance. If you give an empty string as the seperator, the string is split into individual characters.
 string substr(string, start, length)  - cuts a substring from a string starting at "start" up to "length" characters. If start is negative - it indicates starting position from the end of the string (for example substr("test", -2, 2) will return last 2 charactes: "st"). If length is negative - it means so many characters will be omitted from the end of string (example: substr("test", 0, -2) will return string without last 2 characters: "te")
-int strlen(char* string)  - returns string length
-string sprintf(char* format, any value)  - formats given value using standart syntax of C printf function (google "printf" for format details). However it is limited to formatting only 1 value. 
+int strlen(string string)  - returns string length
+string sprintf(string format, any value)  - formats given value using standart syntax of C printf function (google "printf" for format details). However it is limited to formatting only 1 value.
 int typeof(any value)  - returns type of the given value: VALTYPE_INT, VALTYPE_FLOAT or VALTYPE_STR.
-int charcode(char* string)  - returns ASCII code for the first character in given string
+int charcode(string string)  - returns ASCII code for the first character in given string
 float log(float x) - natural logarithm of x
 float exponent(float x) - e^x
 int round(float x) - round x to the nearest integer
@@ -914,7 +937,6 @@ float sin(float x)
 float cos(float x)
 float tan(float x) - tangent of x
 float arctan(float x, float y) - arctangent of x
-void register_hook_proc(int hook, procedure proc) - works just like "register_hook", but allows to specify which procedure to use for given hook script (instead of "start")
 string message_str_game(int fileId, int messageId) - works exactly the same as message_str, except you get messages from files in "text/english/game" folder
 int sneak_success - returns 1 if last sneak attempt (roll against skill) was successful, 0 otherwise
 int tile_light(int elevation, int tileNum) - returns light intensity at the given tile in range from 0 to 65535
@@ -929,35 +951,37 @@ int obj_is_carrying_obj(ObjectPtr invenObj, ObjectPtr itemObj) - returns number 
 
 // hook scripts
 
-int init_hook() - The hook script equivilent of game_loaded; it returns 2 when the script is first loaded, 1 when the player reloads and 0 otherwise.
-mixed get_sfall_arg() - Gets the next argument from sfall. Each time it's called it returns the next argument, or otherwise it returns 0 if there are no more arguments left.
-int get_sfall_args() - Returns all hook arguments as a new temp array.
+int init_hook - The hook script equivilent of game_loaded; it returns 2 when the script is first loaded, 1 when the player reloads and 0 otherwise.
+mixed get_sfall_arg - Gets the next argument from sfall. Each time it's called it returns the next argument, or otherwise it returns 0 if there are no more arguments left.
+array get_sfall_args - Returns all hook arguments as a new temp array.
 void set_sfall_return(int value) - Used to return the new values from the script. Each time it's called it sets the next value, or if you've already set all return values it does nothing.
 void set_sfall_arg(int argnum, int value) - Changes argument value. This is usefull if you have several hook scripts attached to one hook point (see below).
-void register_hook(int hooktype) - Used from a normal global script if you want to run it at the same point a full hook script would normally run.
-void register_hook_proc(int hooktype, procedure proc) - The same as register_hook, except that you specifically define which procedure in the current script should be called as a hook (instead of "start" by default).
-void register_hook_proc_spec(int hook, procedure proc) - Works very similar to register_hook_proc, except that it registers the current script at the end of the hook script execution chain (i.e. the script will be executed after all previously registered scripts for the same hook, including the hs_*.int script).
+void register_hook(int hookID) - Used from a normal global script if you want to run it at the same point a full hook script would normally run.
+void register_hook_proc(int hookID, procedure proc) - Works just like register_hook, except that you specifically define which procedure in the current script should be called as a hook (instead of "start").
+void register_hook_proc_spec(int hookID, procedure proc) - Works the same as register_hook_proc, except that it registers the current script at the end of the hook script execution chain (i.e. the script will be executed after all previously registered scripts for the same hook, including the hs_*.int script).
 
 // arrays
 
-int create_array(int size, int nothing): - creates permanent array (but not "saved")
-int temp_array(int size, int nothing): - works exactly like "create_array", only created array becomes "temporary"
-void fix_array(int arrayID): - changes "temporary" array into "permanent" ("permanent" arrays are not automatically saved into savegames)
-void set_array(int arrayID, mixed key, mixed value): - sets array value (shorthand: arrayID[key] := value)
-mixed get_array(int arrayID, mixed key): - returns array value by key or index (shorthand: arrayID[key])
-void resize_array(int arrayID, int size): - changes array size
-void free_array(int arrayID): - deletes any array
-mixed scan_array(int arrayID, mixed value): - searches for a first occurence of given value inside given array
-int len_array(int arrayID): - returns number of elements or key=>value pairs in a given array
-mixed array_key(int arrayID, int index): - don't use it directly; it is generated by the compiler in foreach loops
-int arrayexpr(mixed key, mixed value): - don't use it directly; it is used by compiler to create array expressions
-void save_array(mixed key, int arrayID): - array is saved (arrayID is associated with given "key")
-int load_array(mixed key): - load array from savegame data by the same key provided in "save_array"
+int create_array(int size, int flags) - creates permanent array (but not "saved")
+int temp_array(int size, int flags) - works exactly like "create_array", only created array becomes "temporary"
+void fix_array(int arrayID) - changes "temporary" array into "permanent" ("permanent" arrays are not automatically saved into savegames)
+void set_array(int arrayID, mixed key, mixed value) - sets array value (shorthand: arrayID[key] := value)
+mixed get_array(int arrayID, mixed key) - returns array value by key or index (shorthand: arrayID[key])
+void resize_array(int arrayID, int size) - changes array size
+void free_array(int arrayID) - deletes any array
+mixed scan_array(int arrayID, mixed value) - searches for a first occurence of given value inside given array
+int len_array(int arrayID) - returns number of elements or key=>value pairs in a given array
+mixed array_key(int arrayID, int index) - don't use it directly; it is generated by the compiler in foreach loops
+int arrayexpr(mixed key, mixed value) - don't use it directly; it is used by compiler to create array expressions
+void save_array(mixed key, int arrayID) - array is saved (arrayID is associated with given "key")
+int load_array(mixed key) - load array from savegame data by the same key provided in "save_array"
 
-any sfall_func0(char* funcName) - calls scripting function with given name and no arguments
-any sfall_func1(char* funcName, arg1) - calls scripting function with given name and 1 argument
-any sfall_func2(char* funcName, arg1, arg2) - calls scripting function with given name and 2 arguments
-any sfall_func3(char* funcName, arg1, arg2, arg3) - calls scripting function with given name and 3 arguments
-any sfall_func4(char* funcName, arg1, arg2, arg3, arg4) - calls scripting function with given name and 4 arguments
-any sfall_func5(char* funcName, arg1, arg2, arg3, arg4, arg5) - calls scripting function with given name and 5 arguments
-any sfall_func6(char* funcName, arg1, arg2, arg3, arg4, arg5, arg6) - calls scripting function with given name and 6 arguments
+any sfall_func0(string funcName) - calls scripting function with given name and no arguments
+any sfall_func1(string funcName, arg1) - calls scripting function with given name and 1 argument
+any sfall_func2(string funcName, arg1, arg2) - calls scripting function with given name and 2 arguments
+any sfall_func3(string funcName, arg1, arg2, arg3) - calls scripting function with given name and 3 arguments
+any sfall_func4(string funcName, arg1, arg2, arg3, arg4) - calls scripting function with given name and 4 arguments
+any sfall_func5(string funcName, arg1, arg2, arg3, arg4, arg5) - calls scripting function with given name and 5 arguments
+any sfall_func6(string funcName, arg1, arg2, arg3, arg4, arg5, arg6) - calls scripting function with given name and 6 arguments
+any sfall_func7(string funcName, arg1, arg2, arg3, arg4, arg5, arg6, arg7) - calls scripting function with given name and 7 arguments
+any sfall_func8(string funcName, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) - calls scripting function with given name and 8 arguments
